@@ -10,6 +10,12 @@ variable "aws_vpc_cni_metrics_version" {
   default     = "v1.12.1"
 }
 
+variable "aws_vpc_cni_metrics_log_level" {
+  description = "AWS VPC CNI Metrics log level"
+  type        = string
+  default     = "INFO"
+}
+
 variable "tags" {
   description = "Additional tags (e.g. `map('BusinessUnit`,`XYZ`)"
   type        = map(string)

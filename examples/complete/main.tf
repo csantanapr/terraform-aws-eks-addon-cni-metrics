@@ -99,9 +99,22 @@ module "aws_vpc_cni_metrics" {
 
   eks_cluster_id        = module.eks.cluster_name
   eks_oidc_provider_arn = module.eks.oidc_provider_arn
- 
+
   # Optional
   aws_vpc_cni_metrics_version = data.aws_eks_addon_version.latest["vpc-cni"].version
+
+  # Optional
+  aws_vpc_cni_metrics_log_level = "DEBUG"
+  
+  # Optional
+  aws_vpc_cni_metrics_helm_config = {
+    values = [
+      <<-EOT
+      env:
+        AWS_CLUSTER_ID: cni-metrics-1
+    EOT
+    ]
+  }
 
   tags = local.tags
 }

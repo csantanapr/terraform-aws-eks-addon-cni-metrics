@@ -7,6 +7,7 @@ locals {
   iam_policy_name       = "${var.eks_cluster_id}-cni-metrics-helper"
   image_registry        = var.image_registry != null ? var.image_registry : local.amazon_container_image_registry_uris[data.aws_region.current.name]
   role_name             = try(coalesce(var.role_name, local.name), "")
+  log_level             = var.aws_vpc_cni_metrics_log_level
 
 
   default_helm_config = {
@@ -37,7 +38,7 @@ locals {
       },
       {
         name  = "env.AWS_VPC_K8S_CNI_LOGLEVEL"
-        value = "INFO"
+        value = local.log_level
       },
       {
         name  = "image.override"

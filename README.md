@@ -38,6 +38,7 @@ The Amazon VPC CNI plugin for Kubernetes metrics helper is a tool that you can u
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_aws_vpc_cni_metrics_helm_config"></a> [aws\_vpc\_cni\_metrics\_helm\_config](#input\_aws\_vpc\_cni\_metrics\_helm\_config) | AWS VPC CNI MetricsHelm Chart config | `any` | `{}` | no |
+| <a name="input_aws_vpc_cni_metrics_log_level"></a> [aws\_vpc\_cni\_metrics\_log\_level](#input\_aws\_vpc\_cni\_metrics\_log\_level) | AWS VPC CNI Metrics log level | `string` | `"INFO"` | no |
 | <a name="input_aws_vpc_cni_metrics_version"></a> [aws\_vpc\_cni\_metrics\_version](#input\_aws\_vpc\_cni\_metrics\_version) | AWS VPC CNI Metrics image version | `string` | `"v1.12.1"` | no |
 | <a name="input_create_release"></a> [create\_release](#input\_create\_release) | Determines whether the Helm release is created | `bool` | `true` | no |
 | <a name="input_create_role"></a> [create\_role](#input\_create\_role) | Whether to create a role | `bool` | `true` | no |
