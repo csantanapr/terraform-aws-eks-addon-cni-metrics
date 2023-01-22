@@ -30,8 +30,8 @@ variable "eks_oidc_provider_arn" {
 variable "image_registry" {
   description = "Custom image registry"
   type        = string
-  default     = null 
-  }
+  default     = null
+}
 
 variable "create_role" {
   description = "Whether to create a role"
