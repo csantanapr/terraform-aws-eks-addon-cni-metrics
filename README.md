@@ -1,7 +1,44 @@
-# vpc-cni-metrics
+# AWS VPC CNI Metrics Helper 
 
-[vpc-cni-metrics](https://docs.aws.amazon.com/eks/latest/userguide/cni-metrics-helper.html)
-The Amazon VPC CNI plugin for Kubernetes metrics helper is a tool that you can use to scrape network interface and IP address information, aggregate metrics at the cluster level, and publish the metrics to Amazon CloudWatch.
+The [Amazon VPC CNI plugin for Kubernetes metrics helper](https://docs.aws.amazon.com/eks/latest/userguide/cni-metrics-helper.html) is a tool that you can use to scrape network interface and IP address information, aggregate metrics at the cluster level, and publish the metrics to Amazon CloudWatch.
+
+## Usage
+
+### Create CNI Metric to existing EKS Cluster
+
+```hcl
+module "aws_vpc_cni_metrics" {
+  source = "github.com/csantanapr/terraform-aws-eks-addon-cni-metrics"
+
+  eks_cluster_id        = "my-eks-cluster"
+  eks_oidc_provider_arn = "oidc.eks.us-west-2.amazonaws.com/id/EXAMPLED539D4633E53DE1B71EXAMPLE"
+
+  # Optional
+  aws_vpc_cni_metrics_version = "v1.12.1"
+
+  # Optional
+  aws_vpc_cni_metrics_log_level = "DEBUG"
+  
+  # Optional
+  aws_vpc_cni_metrics_helm_config = {
+    values = [
+      <<-EOT
+      env:
+        AWS_CLUSTER_ID: "my-cni-metrics"
+    EOT
+    ]
+  }
+
+  tags = local.tags
+}
+
+```
+
+## Examples
+
+Examples codified under the [`examples`](https://github.com/csantanapr/terraform-aws-eks-addon-cni-metrics) are intended to give users references for how to use the module(s) as well as testing/validating changes to the source code of the module. If contributing to the project, please be sure to make any appropriate updates to the relevant examples to allow maintainers to test your changes and to keep the examples up to date for users. Thank you!
+
+- [Complete](https://github.com/csantanapr/terraform-aws-eks-addon-cni-metrics/tree/main/examples/complete)
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements

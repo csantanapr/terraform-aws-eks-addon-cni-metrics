@@ -105,13 +105,14 @@ module "aws_vpc_cni_metrics" {
 
   # Optional
   aws_vpc_cni_metrics_log_level = "DEBUG"
-  
+
   # Optional
   aws_vpc_cni_metrics_helm_config = {
     values = [
       <<-EOT
       env:
         AWS_CLUSTER_ID: cni-metrics-1
+        METRIC_UPDATE_INTERVAL: 300
     EOT
     ]
   }

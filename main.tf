@@ -87,6 +87,7 @@ resource "helm_release" "this" {
 
 module "aws_vpc_cni_metrics_irsa" {
   source = "terraform-aws-modules/iam/aws//modules/iam-role-for-service-accounts-eks"
+  version = "~> 5.10"
 
   role_name   = local.role_name
   create_role = var.create_role
